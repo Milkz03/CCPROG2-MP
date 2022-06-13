@@ -7,6 +7,9 @@
 // Max no. of entries
 #define MAX_ENTRIES 150
 
+// Max no. of languages
+#define LANGUAGES 7100
+
 typedef char str[MAX_LETTERS];
 
 // Struct for a single pair (could do something like typedef char str[LETTERS])
@@ -23,6 +26,16 @@ typedef struct entryTag {
     pair aPairs[MAX_PAIRS];
     int nPairs;
 } entry;
+
+typedef struct languageTag {
+    str language;
+    int nLanguageCount;
+} languageType;
+
+typedef struct matchingTag {
+    str language,
+        word;
+} matchingType;
 
 void initDatabase(entry*);
 void displayMainMenu();
@@ -49,3 +62,9 @@ void searchWord(entry*, int);
 void searchTranslation(entry*, int);
 void export(entry*, int);
 void import(entry*, int*);
+void switchLTMenu(int, int*, int*, int*);
+void identifyML(int*, int*, int*);
+void FileReader(str, str[], char[], int*, int*);
+int MatchingPairs(str[], matchingType[], int*, int);
+int EmptyLanguageMember(languageType[], int);
+int EmptyMatchingMember(matchingType[], int);
